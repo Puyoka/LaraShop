@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,10 +20,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
+Route::get('/detail/{id}', [App\Http\Controllers\ProductsController::class, 'detail']);
+Route::post('/addToShopcart', [App\Http\Controllers\ProductsController::class, 'addToShopcart'])->name('addToShopcart');
 
-Route::get('/shopcart', [App\Http\Controllers\ShopcartController::class, 'add'])->name('add');
+
 Route::get('/shopcart', [App\Http\Controllers\ShopcartController::class, 'index'])->name('shopcart');
-
-
 
 Route::get('/orders', [App\Http\Controllers\OrdersController::class, 'index'])->name('orders');
