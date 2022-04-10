@@ -45,7 +45,7 @@ $numOfProducts =  ProductsController::numOfProductsInCart();
                             <a class="nav-link" href="{{ route('products') }}">{{ __('Products') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('shopcart') }}">Shopcart({{$numOfProducts}})</a>
+                            <a class="nav-link" href="{{ route('cart') }}">Shopcart({{$numOfProducts}})</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('orders') }}">{{ __('Orders') }}</a>

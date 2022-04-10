@@ -24,6 +24,7 @@ Route::get('/product/{id}', [App\Http\Controllers\ProductsController::class, 'de
 Route::post('/addToShopcart', [App\Http\Controllers\ProductsController::class, 'addToShopcart'])->name('addToShopcart');
 
 
-Route::get('/shopcart', [App\Http\Controllers\ShopcartController::class, 'index'])->name('shopcart');
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
+Route::get('/remove/{id}', [App\Http\Controllers\CartController::class, 'remove'])->name('remove');
 
 Route::get('/orders', [App\Http\Controllers\OrdersController::class, 'index'])->name('orders');
