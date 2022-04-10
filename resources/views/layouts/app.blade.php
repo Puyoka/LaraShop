@@ -1,3 +1,8 @@
+<?php
+use App\Http\Controllers\ProductsController;
+$numOfProducts =  ProductsController::numOfProductsInCart();
+?>
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -40,7 +45,7 @@
                             <a class="nav-link" href="{{ route('products') }}">{{ __('Products') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('shopcart') }}">{{ __('Shopcart') }}</a>
+                            <a class="nav-link" href="{{ route('shopcart') }}">Shopcart({{$numOfProducts}})</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('orders') }}">{{ __('Orders') }}</a>

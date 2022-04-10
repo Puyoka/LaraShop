@@ -37,4 +37,15 @@ class ProductsController extends Controller
         $data =Product::find($id);
         return view('detail', ['product'=>$data]);
     }
+    public static function numOfProductsInCart()
+    {
+        if(Auth::check())
+        {
+            return Cart::where('userID',Auth::id())->count();
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
