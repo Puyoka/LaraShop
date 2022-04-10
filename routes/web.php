@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
-Route::get('/detail/{id}', [App\Http\Controllers\ProductsController::class, 'detail']);
+Route::get('/product/{id}', [App\Http\Controllers\ProductsController::class, 'detail']);
 Route::post('/addToShopcart', [App\Http\Controllers\ProductsController::class, 'addToShopcart'])->name('addToShopcart');
 
 
