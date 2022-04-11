@@ -41,25 +41,34 @@ class CartController extends Controller
 
     public static function order(Request $req)
     {
-        $orderItems = DB::table('cart')
-        ->join('products', 'cart.productID', '=', 'products.id')
-        ->where('userID',Auth::id())
-        ->select('products.*', 'cart.id as cartID')
-        ->get();
-
-        foreach ($orderItems as $item)
+        if(Auth::check())
         {
-            $order = new Order;
-            $order->productID = $item->id;
-            $order->userID = Auth::id();
-            $order->sellerID = $item->sellerID;
-            $order->paymentMethod = $req->paymentMethod;
-            $order->status = 'processing';
-            $order->save();
+            $orderItems = DB::table('cart')
+            ->join('products', 'cart.productID', '=', 'products.id')
+            ->where('userID',Auth::id())
+            ->select('products.*', 'cart.id as cartID')
+            ->get();
 
+            if($orderItems->count() > 0)
+            {
+                foreach ($orderItems as $item)
+                {
+                    $order = new Order;
+                    $order->productID = $item->id;
+                    $order->userID = Auth::id();
+                    $order->sellerID = $item->sellerID;
+                    $order->paymentMethod = $req->paymentMethod;
+                    $order->status = 'processing';
+                    $order->save();
 
-            Cart::destroy($item->cartID);
+                    Cart::destroy($item->cartID);
+                }
+                return redirect('/orders');
+            }
+            else
+            {
+                return redirect('/cart');
+            }
         }
-        return view('orders');
     }
 }

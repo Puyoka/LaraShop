@@ -28,7 +28,7 @@
 
                 <div class="card">
                     <h4>Total: ${{$products->sum('price')}}</h4>
-                    <form action="/order" method="post">
+                    <form action=" {{ route('order') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="">PaymentMethod</label><br>

@@ -16,11 +16,35 @@ class OrdersController extends Controller
     {
         if(Auth::check())
         {
-            return view('orders');
+            $orders = DB::table('orders')
+            ->groupBy('created_at')
+            ->having('userID', Auth::id())
+            ->get();
+
+
+            return view('orders', ['orders' => $orders]);
         }
         else
         {
             return redirect('/login');
         }
+    }
+
+    public static function getOrdersByCreatedAt($created_at)
+    {
+        $orders = DB::table('orders')
+            ->join('products', 'products.id', '=', 'orders.productID')
+            ->where('orders.created_at', $created_at)
+            ->where('userID', Auth::id())
+            ->get();
+        return $orders;
+    }
+
+    public static function getProductByID($id)
+    {
+        $product = DB::table('products')
+            ->where('id', $id)
+            ->get();
+        return $product;
     }
 }
