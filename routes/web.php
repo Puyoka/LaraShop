@@ -13,6 +13,8 @@ use App\Http\Controllers;
 |
 */
 
+//puff count:999+
+
 Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
 
 Auth::routes();
@@ -26,5 +28,6 @@ Route::post('/addToShopcart', [App\Http\Controllers\ProductsController::class, '
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::get('/remove/{id}', [App\Http\Controllers\CartController::class, 'remove'])->name('remove');
+Route::post('/order', [App\Http\Controllers\CartController::class, 'order'])->name('order');
 
 Route::get('/orders', [App\Http\Controllers\OrdersController::class, 'index'])->name('orders');

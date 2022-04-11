@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Integer;
 
-class ProductSeeder extends Seeder
+class SellerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,15 +18,10 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        for ($x = 0; $x <= 10; $x++) {
-            DB::table('products')->insert([
+        for ($x = 0; $x <= 2; $x++) {
+            DB::table('sellers')->insert([
                 'name' => Str::random(rand(4,10)),
-                'manufacturer' => Str::random(rand(5,8)).'.Kft',
-                'sellerID' => rand(1,2),
-                'price' => rand(50,150),
-                'quantity' => rand(1,100),
-                'category' => 'cat('.rand(1,4).')',
-                'other' => Str::random(8),
+                'password' => Hash::make(Str::random(rand(4,10))),
             ]);
         }
     }

@@ -20,12 +20,24 @@
                         <th scope="row"> {{ $i+1 }}</td>
                         <td> {{ $products[$i]->name }}</td>
                         <td>${{ $products[$i]->price }}</td>
-                        <td><a href="remove/{{$products[$i]->cartID}}"><button type="button" class="btn btn-danger">Remove</button></a></td>
+                        <td><a href="remove/{{$products[$i]->cartID}}"><button type="button" class="btn btn-secondary">Remove</button></a></td>
                       </tr>
                     @endfor
                     </tbody>
                 </table>
-            <h4>Total: ${{$products->sum('price')}}</h4>
+
+                <div class="card">
+                    <h4>Total: ${{$products->sum('price')}}</h4>
+                    <form action="/order" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="">PaymentMethod</label><br>
+                            <input type="radio" name="paymentMethod" checked="checked" value="cash"> <span>Cash</span><br>
+                            <input type="radio" name="paymentMethod" value="card"> <span>Card</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Order</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
