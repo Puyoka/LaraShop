@@ -19,21 +19,17 @@
                     </div>
                     <div>
                         @foreach ($itemsInOrder=App\Http\Controllers\OrdersController::getOrdersByCreatedAt($orders[$i]->created_at) as $item)
-                            <div>
-                                <div class="card-body">
-                                    <table class="table" >
-                                        <tbody>
-                                          <tr>
-                                            <th> {{$item->name}}</td>
-                                            <td> ${{$item->price}}</td>
-                                            <td>{{$item->status}}</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                          </div>
-
-
+                            <div class="card-body">
+                                <table class="table" >
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" width= "33%"> {{$item->name}}</th>
+                                            <td  class="text-center"width= "33%">${{$item->price}}</td>
+                                            <td  class="text-end" width= "33%">{{$item->status}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         @endforeach
                     </div>
                 @endfor

@@ -24,6 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
 Route::get('/product/{id}', [App\Http\Controllers\ProductsController::class, 'detail']);
 Route::post('/addToShopcart', [App\Http\Controllers\ProductsController::class, 'addToShopcart'])->name('addToShopcart');
+Route::get('/search', [App\Http\Controllers\ProductsController::class, 'search'])->name('search');
+Route::get('/orderby', [App\Http\Controllers\ProductsController::class, 'orderby'])->name('orderby');
 
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
